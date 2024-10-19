@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercici4</title>
+    <style>
+        .table1 {
+            margin-bottom: 2rem;
+            border: 1px solid black;
+        }
+        .table2 {
+            margin-bottom: 1rem;
+            border: 1px solid black;
+        }
+        th, td {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body>
+    <table class="table1">
+        <tr>
+            <th>Name</th>
+            <th colspan="2">Telephone</th>
+        </tr>
+        <tr>
+            <td>Bill Gates</td>
+            <td>555 77 854</td>
+            <td>555 77 855</td>
+        </tr>
+    </table>
+
+    <table class="table2">
+        <tr>
+            <th>First Name:</th>
+            <td>Bill Gates</td>
+        </tr>
+        <tr>
+            <th rowspan="2">Telephone:</th>
+            <td>555 77 854</td>
+        </tr>
+        <tr>
+            <td>555 77 855</td>
+        </tr>
+    </table>
+    <br>
+    <table style="border: 1px solid black;" cellspacing="0" cellpadding="10">
+        <tr>
+            <td>
+                <table style="border: 1px solid black;" cellspacing="2" cellpadding="1">
+                    <tr>
+                        <td>First</td>
+                        <td>Row</td>
+                    </tr>
+                    <tr>
+                        <td>Second</td>
+                        <td>Row</td>
+                    </tr>
+                </table>
+            </td>
+            <td>
+                <table style="border: 1px solid black;" cellspacing="2" cellpadding="20">
+                    <tr>
+                        <td>First</td>
+                        <td>Row</td>
+                    </tr>
+                    <tr>
+                        <td>Second</td>
+                        <td>Row</td>
+                    </tr>
+                </table>
+            </td>
+            <td>&#10004;</td> <!-- Checkmark -->
+            <td>&#10004;</td> <!-- Checkmark -->
+        </tr>
+    </table>
+
+</body>
+</html>

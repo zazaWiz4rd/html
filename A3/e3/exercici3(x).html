@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>exercici3</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <hr/>
+    <b>A nested List:</b>
+    <ul>
+        <li>Coffee</li>
+        <li>Tea</li>
+        <ul>
+            <li>Black tea</li>
+            <li>Green tea</li>
+            <ul>
+                <li>China</li>
+                <li>Africa</li>
+            </ul>
+        </ul>
+    </ul>
+    <ul>
+        <li>Milk</li>
+    </ul>
+    <pre>
+Coffee
+  - black hot drink
+
+Milk
+  - white hot drink
+    </pre>
+    <b>Numbered list:</b>
+    <ol>
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+    <b>Letters list:</b>
+    <ol style="list-style-type: upper-alpha;">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+    <b>Lowercase letters list:</b>
+    <ol style="list-style-type: lower-alpha;">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+    <b>Roman numbers list:</b>
+    <ol style="list-style-type: upper-roman;">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+    <b>Lowercase Roman numbers list:</b>
+    <ol style="list-style-type: lower-roman;">
+        <li>Apples</li>
+        <li>Bananas</li>
+        <li>Lemons</li>
+        <li>Oranges</li>
+    </ol>
+    <hr/>
+    <p>Link per enviar emails a una adreça determinada:</p>
+    <a href="#">Enviar email</a>
+    <hr/>
+    <main>
+        <h2><b>CREATE TABLE examples</b></h2>
+        <ul>
+            <li><a href="#basic">Basic CREATE TABLE statement</a></li>
+            <li><a href="#engine">Creating a table with a particular storage engine</a></li>
+            <li><a href="#auto_increment">Creating a table with auto_increment</a></li>
+            <li><a href="#timestamp">Creating a table with the current timestamp</a></li>
+            <li><a href="#default-now">Creating a table with TIMESTAMP DEFAULT NOW()</a></li>
+            <li><a href="#viewing">Viewing a table definition</a></li>
+        </ul>
+
+        <h2 id="basic">Basic CREATE TABLE statement</h2>
+        <p>A very basic <code>CREATE TABLE</code> statement wich should work in any SQL database</p>
+        <pre>
+mysql> CREATE TABLE example (
+        id INT,
+        data VARCHAR(100)
+       );
+Query OK, 0 rows affected (0.03 sec)
+        </pre>
+        <h2 id="engine">Creating a table with a particular storage engine</h2>
+        <p>MySQL provides a variety of different table types with differing levels of functionality. The usual default, and most widely used, is <code>MyISAM</code>. Other storage types must be explicitly defined:</p>
+        <pre>
+mysql> CREATE TABLE example_innodb (
+         id INT,
+         data VARCHAR(100)
+       ) TYPE=innodb;
+Query OK, 0 rows affected (0.03 sec)
+        </pre>
+
+        <h2 id="auto_increment">Creating a table with auto_increment</h2>
+        <p>Often you'll want to be able to automatically assign a sequential value to a column:</p>
+        <pre>
+mysql> CREATE TABLE example_autoincrement (
+         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+         data VARCHAR(100)
+       );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO example_autoincrement (data)
+    ->      VALUES ('Hello world');
+Query OK, 1 rows affected (0.01 sec)
+
+mysql> SELECT * FROM example_autoincrement;
+
+<table>
+    <tr>
+        <td>id</td>
+        <td>data</td>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Hello world</td>
+    </tr>
+</table>
+1 row in set (0.01 sec)
+        </pre>
+
+        <h2 id="timestamp">Creating a table with the current timestamp</h2>
+        <p>Often it's useful to have an automatic timestamp on each record. The MySQL special datatype <code>TIMESTAMP</code> enables you to keep track of changes to a record:</p>
+        <pre>
+mysql> CREATE TABLE example_timestamp (
+         id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+         data VARCHAR(100),
+         cur_timestamp TIMESTAMP
+       );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> INSERT INTO example_timestamp (data)
+            VALUES ('The time of creation is:');
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM example_timestamp;
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>data</th>
+        <th>cur_timestamp</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>The time of creation is:</td>
+        <td>2024-10-18 12:00:00</td>
+    </tr>
+</table>
+1 row in set (0.01 sec)
+
+mysql> UPDATE example_timestamp
+          SET data='The current timestamp is: '
+        WHERE id=1;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1 Changed: 1 Warnings: 0
+
+mysql> SELECT * FROM example_timestamp;
+
+<table>
+    <tr>
+        <th>id</th>
+        <th>data</th>
+        <th>cur_timestamp</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>The time of creation is:</td>
+        <td>2024-10-18 12:00:00</td>
+    </tr>
+</table>
+1 row in set (0.01 sec)
+        </pre>
+        <p>The column <code>cur_timestamp</code> is automatically updated every time the record is changed.</p>
+
+        <h2 id="default-now">Creating a table with TIMESTAMP DEFAULT NOW()</h2>
+        <p>MySQL supports the construct <code>TIMESTAMP DEFAULT NOW()</code> only from version 4.1:</p>
+        <pre>
+CREATE TABLE example_default_now (
+    id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    data VARCHAR(100),
+    cur_timestamp TIMESTAMP DEFAULT NOW()
+);
+        </pre>
+        <p>In this case the column<code>created</code>retains its initial value and is not changed during subsequent updates</p>
+        <p>For versions prior to 4.1, the only workaround is to create two timestamp columns in a table, and explicitly set the second one wen inserting the record. Remember: the first<code>TIMESTAMP</code>will be automagically updated on each record update.</p>
+        
+        
+        <h2 id="viewing">Viewing a table definition</h2>
+        <p>For basic information on table columns, use <code>DESC tablename</code>:</p>
+        <pre>
+
+        </pre>
+        <p>Exact definition of the table:</p>
+        <pre>
+mysql> SHOW CREATE TABLE example;
+
+<table>
+    <tr>
+        <th>Field</th>
+        <th>Type</th>
+        <th>Null</th>
+        <th>Key</th>
+        <th>Default</th>
+        <th>Extra</th>
+    </tr>
+    <tr>
+        <td>id</td>
+        <td>int(11)</td>
+        <td>YES</td>
+        <td></td>
+        <td>NULL</td>
+        <td></td>
+    </tr>
+    <tr>
+        <td>data</td>
+        <td>varchar(100)</td>
+        <td>YES</td>
+        <td></td>
+        <td>NULL</td>
+        <td></td>
+    </tr>
+</table>
+        </pre>
+        <p>Exact definition of the table:</p>
+        <pre>
+mysql> SHOW CREATE TABLE example;
++---------+--------------------------------------------------------------------------+
+| Table   | Create Table                                                             |                                                       |
++---------+--------------------------------------------------------------------------+
+| example | CREATE TABLE `example` (                                                 |
+|            `id` int(11) NOT NULL AUTO_INCREMENT,                                   |
+|           `data` varchar(100) DEFAULT NULL,                                        |
+|           PRIMARY KEY (`id`)                                                       |
+|          ) ENGINE=InnoDB DEFAULT CHARSET=latin1 |                                  |
++---------+--------------------------------------------------------------------------+
+1 row in set (0.00 sec)      
+        </pre>
+        <p>(this example from MySQL 4.1)</p>
+    </main>
+
+</body>
+</html>

@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex3</title>
+    <style>
+        body {
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <main>
+        <hr/>
+        <b>A nested List:</b>
+        <ul>
+            <li>Coffee</li>
+            <li>Tea</li>
+            <ul>
+                <li>Black tea</li>
+                <li>Green tea</li>
+                <ul>
+                    <li>China</li>
+                    <li>Africa</li>
+                </ul>
+            </ul>
+        </ul>
+        <ul>
+            <li>Milk</li>
+        </ul>
+        <pre>
+ Coffee
+      - black hot drink
+
+ Milk
+      - white hot drink
+        </pre>
+        <b>Numbered list:</b>
+        <ol>
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Lemons</li>
+            <li>Oranges</li>
+        </ol>
+        <b>Letters list:</b>
+        <ol style="list-style-type: upper-alpha;">
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Lemons</li>
+            <li>Oranges</li>
+        </ol>
+        <b>Lowercase letters list:</b>
+        <ol style="list-style-type: lower-alpha;">
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Lemons</li>
+            <li>Oranges</li>
+        </ol>
+        <b>Roman numbers list:</b>
+        <ol style="list-style-type: upper-roman;">
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Lemons</li>
+            <li>Oranges</li>
+        </ol>
+        <b>Lowercase Roman numbers list:</b>
+        <ol style="list-style-type: lower-roman;">
+            <li>Apples</li>
+            <li>Bananas</li>
+            <li>Lemons</li>
+            <li>Oranges</li>
+        </ol>
+        <hr/>
+        <p>Link per enviar emails a una adreça determinada:</p>
+        <a href="#">Enviar email</a>
+        <hr/>
+        <h2><b>CREATE TABLE examples</b></h2>
+        <ul>
+            <li><a href="#basic">Basic CREATE TABLE statement</a></li>
+            <li><a href="#engine">Creating a table with</a></li>
+            <li><a href="#">Creating a table with auto increment</a></li>
+            <li><a href="#">Creating a table with the current timestamp</a></li>
+            <li><a href="#">Creating a table with TIMESTAMP_DEFAULT_NOW()</a></li>
+            <li><a href="#">Viewing a table definition</a></li>
+        </ul>
+        <h3 id="basic"><b>Basic CREATE TABLE statement</b></h3>
+        <p>A very basic <code>CREATE TABLE</code> statement wich should work in any SQL database</p>
+        <pre>
+mysql> CREATE TABLE example (
+        id INT
+        data VARCHAR(100)
+);
+Query OK, 0rows affected (0.03 sec)
+        </pre>
+        <h3 id="engine"><b>Creating a table with a particular storage engine</b></h3>
+        <p>MySQL provides a variety of different table types with differing levels of functionality. The usual default, and most widely used, is <code>MyISAM</code>. Other storage types must be explicitly defined:</p>
+        <pre>
+
+mysql> CREATE TABLE example_innodb (
+        id INT,
+        data VARCHAR(100)
+    )   TYPE=innodb;
+Query OK, 0 rows affected (0.03 sec)
+
+        </pre>
+    </main>
+</body>
+</html>

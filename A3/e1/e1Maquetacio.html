@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maquetació</title>
+    <style>
+        * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    display: grid;
+    grid-template-areas:
+        "header header"
+        "main aside"
+        "footer footer";
+    grid-template-rows: 1fr 2fr 1fr;
+    grid-template-columns: 2fr 1fr;
+    height: 100vh;
+    font-family:Georgia, 'Times New Roman', Times, serif;
+}
+
+header {
+    grid-area: header;
+    background-color: #0073e6;
+    padding: 20px;
+    font-size: 5rem;
+}
+
+main {
+    grid-area: main;
+    background-color: #00e6e6;
+    padding: 20px;
+    font-size: 5rem;
+}
+
+aside {
+    grid-area: aside;
+    background-color: #00cccc;
+    padding: 20px;
+    font-size: 5rem;
+}
+
+footer {
+    grid-area: footer;
+    background-color: #ffcc99;
+    padding: 20px;
+    font-size: 5rem;
+}
+    </style>
+</head>
+<body>
+    <header>Header</header>
+    <main>Main</main>
+    <aside>Aside</aside>
+    <footer>Footer</footer>
+</body>
+</html>
